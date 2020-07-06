@@ -1,0 +1,1 @@
+Folder for code when learning SQL on code academy
