@@ -1,0 +1,38 @@
+-- This is the first query:
+
+SELECT DISTINCT year from population_years;
+
+
+
+-- Add your additional queries below:
+
+SELECT *
+  FROM population_years
+    WHERE country = 'Gabon'
+      ORDER BY population DESC 
+        LIMIT 1;
+
+SELECT *
+  FROM population_years
+    WHERE year = 2005
+      ORDER BY population
+        LIMIT 10;
+
+SELECT DISTINCT country, population
+  FROM population_years
+    WHERE population > 100 AND year = 2010;
+
+SELECT DISTINCT country
+  FROM population_years
+    WHERE country like '%Islands%';
+
+SELECT DISTINCT country,
+    (SELECT population FROM population_years
+    WHERE country = 'Indonesia' AND year = 2000) AS '2000_Population',
+    (SELECT population FROM population_years
+    WHERE country = 'Indonesia' AND year = 2010) AS '2010_Population',
+    (SELECT population FROM population_years
+    WHERE country = 'Indonesia' AND year = 2010) - (SELECT population FROM population_years
+    WHERE country = 'Indonesia' AND year = 2000) AS diff
+  FROM population_years
+    WHERE country = 'Indonesia';
